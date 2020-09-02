@@ -8,6 +8,8 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.version import LooseVersion
 
+import torch
+
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=''):
@@ -39,7 +41,7 @@ class CMakeBuild(build_ext):
 
         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
                       '-DPYTHON_EXECUTABLE=' + sys.executable,
-                      '-DCMAKE_PREFIX_PATH=/Users/demo/.pyenv/versions/3.6.9/lib/python3.6/site-packages/torch/']
+                      '-DCMAKE_PREFIX_PATH=' + torch.utils.cmake_prefix_path]
 
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
