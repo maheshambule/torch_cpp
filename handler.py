@@ -9,7 +9,7 @@
 # permissions and limitations under the License.
 
 """
-Defines an API for Pybind Module of Tensorflow C API.
+Defines an API for Pybind11 Module of Torch C++ API.
 """
 import json
 import os
@@ -142,14 +142,14 @@ def handle(data, context):
 
 
 if __name__ == "__main__":
-    import mms
+    import ts
     import numpy as np
-    from mms.context import Context
+    from ts.context import Context
     import time
 
     source_path = pathlib.Path(__file__).parent.absolute()
     model_dir = '{}'.format(source_path)
-    context = Context('tf_model', model_dir, '', 1, 'gpu', mms.__version__)
+    context = Context('tf_model', model_dir, '', 1, 'gpu', ts.__version__)
 
     data = np.random.uniform(size=(3, 3, 224, 224)).astype('float32')
 
