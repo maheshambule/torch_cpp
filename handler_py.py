@@ -169,10 +169,11 @@ if __name__ == "__main__":
     for _ in range(1000):
         start = time.time()
         print(handle(data, context))
-        handle_time += time.time() - start
+        diff =  time.time() - start
+        print("diff is {}".format(diff))
+        handle_time += diff
 
-    print("avg time taken {:.3f} us ".format(handle_time* 1e6/1e3))
-    #avg time taken 691184.015 us
+    print("avg time taken {:.3f} us ".format(handle_time * 1e6 / 1e3))
 
 
 # torch-model-archiver --model-name torch_c_model --version 1.0 --serialized-file /Users/demo/PycharmProjects/test_models/torch_c_model/traced_resnet_model.pt --handler /Users/demo/PycharmProjects/test_models/torch_c_model/handler.py -f
