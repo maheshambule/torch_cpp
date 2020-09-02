@@ -41,7 +41,7 @@ class CMakeBuild(build_ext):
 
         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
                       '-DPYTHON_EXECUTABLE=' + sys.executable,
-                      '-DCMAKE_PREFIX_PATH=' + torch.utils.cmake_prefix_path]
+                      '-DCMAKE_PREFIX_PATH=' + os.path.dirname(torch.__file__)]
 
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
